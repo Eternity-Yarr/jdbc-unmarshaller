@@ -1,8 +1,12 @@
 jdbc-unmarshaller
 =================
 
-This library reflective maps object fields to columns of JDBC ```ResultSet``` row.
+This library reflective maps by name object fields to columns of JDBC ```ResultSet``` row.
 
+It iterates on object fields, trying to find matching columns in ```ResultSet```, and 
+ throws ```IllegalArgumentException``` if there's no such column found.
+ 
+You can override this behavior, so library will skip absent fields by calling ```allowNulls()``` method on ```ResultSetUnmarshall``` instance. 
 
 ### [Example](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/UmTest.java)
 Given some [POJO](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/TestPOJO.java) ```TestPOJO.java```
@@ -21,7 +25,7 @@ And MySQL table
 
 ```
 
-with a few rows representing TestPOJO instances, we can select them and unmarshall to Java objects like that:
+with a few rows representing ```TestPOJO``` instances, we can select them and unmarshall to Java objects like that:
 
 ```java
 ResultSetUnmarshall rsm = new ResultSetUnmarshall();
