@@ -48,3 +48,15 @@ TestPOJO p = new TestPOJO();
 /* do some preinitialization */
 rsm.asPOJO(p, rs, TestPOJO.class);
 ```
+
+### Custom (non-primitive) types
+
+To map column to custom types from String representation by creating type adapters, 
+which extends [TypeAdapter](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/main/java/org/lutra/unmarshaller/TypeAdapter.java) class,
+like this dummy [StringAdapter](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/main/java/org/lutra/unmarshaller/adapters/StringAdapter.java) implementation does.
+
+And then register it on ```ResultSetUnmarshaller``` instance like this, before unmarshalling:
+```java
+rsm.registerAdapter(String.class, StringAdapter.class);
+```
+  
