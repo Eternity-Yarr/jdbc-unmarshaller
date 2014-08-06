@@ -53,7 +53,7 @@ public class ResultSetUnmarshall
 		return found;
 	}
 
-	public <T> void asPOJO(T t, ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
+	public <T> void asPOJO(final T t, ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
 	{
 		Field[] fs = clazz.getDeclaredFields();
 		for(Field f : fs)
