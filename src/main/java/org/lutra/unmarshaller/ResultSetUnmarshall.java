@@ -73,7 +73,7 @@ public class ResultSetUnmarshall
 			}
 			try
 			{
-				if(f.isAccessible() && columnPresent(rs, column_name))
+				if(columnPresent(rs, column_name))
 					try
 					{
 						if(registered_adapters.get(f.getType()) != null)

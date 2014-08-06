@@ -15,4 +15,14 @@ public class testPOJO
 	double double_field;
 	@Column(name="my_int")
 	int int_field_custom_name;
+	@Override
+	public String toString()
+	{
+		return "testPOJO{" +
+			"int_field=" + int_field +
+			", string_field='" + string_field + '\'' +
+			", double_field=" + double_field +
+			", int_field_custom_name=" + int_field_custom_name +
+			'}';
+	}
 }
