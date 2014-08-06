@@ -64,6 +64,8 @@ public class ResultSetUnmarshall
 				Column ca = f.getAnnotation(Column.class);
 				if(ca.name() != null)
 					column_name = ca.name();
+				if(!ca.updatable())
+					continue;
 			}
 			try
 			{

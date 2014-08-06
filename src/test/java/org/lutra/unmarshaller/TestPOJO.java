@@ -15,14 +15,18 @@ public class TestPOJO
 	double double_field;
 	@Column(name="my_int")
 	int int_field_custom_name;
+	@Column(updatable = false)
+	String pre_initialized = "With some value";
+
 	@Override
 	public String toString()
 	{
-		return "testPOJO{" +
+		return "TestPOJO{" +
 			"int_field=" + int_field +
 			", string_field='" + string_field + '\'' +
 			", double_field=" + double_field +
 			", int_field_custom_name=" + int_field_custom_name +
+			", pre_initialized='" + pre_initialized + '\'' +
 			'}';
 	}
 }
