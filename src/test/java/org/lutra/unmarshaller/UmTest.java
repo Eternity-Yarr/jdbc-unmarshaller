@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 /**
  * 06.08.2014 at 15:12
- * UmTest of mysql-unmarshaller project
+ * UmTest of jdbc-unmarshaller project
  *
  * @author Dmitry V. (savraz [at] gmail.com)
  */

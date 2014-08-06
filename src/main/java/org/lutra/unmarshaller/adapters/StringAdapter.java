@@ -4,7 +4,7 @@ import org.lutra.unmarshaller.TypeAdapter;
 
 /**
  * 06.08.2014 at 14:58
- * StringAdapter of mysql-unmarshaller project
+ * StringAdapter of jdbc-unmarshaller project
  *
  * @author Dmitry V. (savraz [at] gmail.com)
  */

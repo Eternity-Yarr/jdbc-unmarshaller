@@ -2,7 +2,7 @@ package org.lutra.unmarshaller;
 
 /**
  * 06.08.2014 at 14:46
- * TypeAdapter of mysql-unmarshaller project
+ * TypeAdapter of jdbc-unmarshaller project
  *
  * @author Dmitry V. (savraz [at] gmail.com)
  */

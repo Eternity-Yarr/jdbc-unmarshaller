@@ -17,6 +17,7 @@
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>5.1.31</version>
+        <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>javax.persistence</groupId>

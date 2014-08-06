@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 06.08.2014 at 14:00
- * ResultSetUnmarshall of mysql-unmarshaller project
+ * ResultSetUnmarshall of jdbc-unmarshaller project
  *
  * @author Dmitry V. (savraz [at] gmail.com)
  */
