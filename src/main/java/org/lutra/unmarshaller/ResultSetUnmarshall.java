@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -88,6 +89,8 @@ public class ResultSetUnmarshall
 							f.setByte(t, rs.getByte(column_name));
 						else if(f.getType() == Float.class || f.getType() == float.class)
 							f.setFloat(t, rs.getFloat(column_name));
+						else if(f.getType() == Date.class)
+							f.set(t, rs.getDate(column_name));
 					}
 					catch(InstantiationException e)
 					{
