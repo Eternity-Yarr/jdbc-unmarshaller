@@ -1,7 +1,7 @@
 jdbc-unmarshaller
 =================
 
-This library reflective maps object fields to columns of JDBC ResultSet row.
+This library reflective maps object fields to columns of JDBC ```ResultSet``` row.
 
 
 ### [Example](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/UmTest.java)
@@ -21,7 +21,7 @@ And MySQL table
 
 ```
 
-with a few rows representing TestPOJO instances, we can select them, and unmarshall to java objects like that:
+with a few rows representing TestPOJO instances, we can select them and unmarshall to Java objects like that:
 
 ```java
 ResultSetUnmarshall rsm = new ResultSetUnmarshall();
@@ -38,8 +38,8 @@ For some customization use  ```javax.persistence.Column``` annotation.
 
 Currently this library supports ```name``` and ```updatable``` fields.
 
-* ```name``` stands for some custom JDBC column name (``` @Column(name="my_int") ```)
-* ```updatable``` signals that this particular field shouldn't be updated by unmarshaller (``` @Column(updatable = false) ```)
+* ```name``` stands for some custom JDBC column name ``` @Column(name="my_int") ```
+* ```updatable``` signals that this particular field shouldn't be updated by unmarshaller ``` @Column(updatable = false) ```
 
 Also it's possible to unmarshall JDBC row to existing instance:
 
