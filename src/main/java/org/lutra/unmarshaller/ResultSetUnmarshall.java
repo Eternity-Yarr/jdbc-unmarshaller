@@ -53,17 +53,8 @@ public class ResultSetUnmarshall
 		return found;
 	}
 
-	public <T> T asPOJO(ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
+	public <T> void asPOJO(T t, ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
 	{
-		T t;
-		try
-		{
-			t = clazz.newInstance();
-		}
-		catch(InstantiationException | IllegalAccessException e)
-		{
-			throw new IllegalArgumentException(String.format("Cannot instantiate object of class %s", clazz), e);
-		}
 		Field[] fs = clazz.getDeclaredFields();
 		for(Field f : fs)
 		{
@@ -102,14 +93,26 @@ public class ResultSetUnmarshall
 					}
 				else if(!allow_nulls)
 					throw new IllegalArgumentException(String.format("Column for public field %s not found in result set, while nulls are not allowed", f.getName()));
-				else
-					f.set(t, null);
 			}
 			catch(IllegalAccessException e)
 			{
 				throw new IllegalArgumentException(String.format("Property %s of %s object is not accessible", f.getName(), clazz), e);
 			}
 		}
+	}
+
+	public <T> T asPOJO(ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
+	{
+		T t;
+		try
+		{
+			t = clazz.newInstance();
+		}
+		catch(InstantiationException | IllegalAccessException e)
+		{
+			throw new IllegalArgumentException(String.format("Cannot instantiate object of class %s", clazz), e);
+		}
+		asPOJO(t, rs, clazz);
 
 		return t;
 	}
