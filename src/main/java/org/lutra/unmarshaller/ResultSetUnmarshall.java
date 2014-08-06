@@ -98,7 +98,7 @@ public class ResultSetUnmarshall
 						throw new IllegalArgumentException(String.format("Type adapter %s constructor is not accessible", registered_adapters.get(f.getType())), e);
 					}
 				else if(!allow_nulls)
-					throw new IllegalArgumentException(String.format("Column for public field %s not found in result set, while nulls are not allowed", f.getName()), e);
+					throw new IllegalArgumentException(String.format("Column for public field %s not found in result set, while nulls are not allowed", f.getName()));
 				else
 					f.set(t, null);
 			}
