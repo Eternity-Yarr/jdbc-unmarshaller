@@ -1,7 +1,7 @@
 jdbc-unmarshaller
 =================
 
-This library reflective maps *by name* object fields to columns of JDBC ```ResultSet``` row.
+This library reflective maps **by name** object fields to columns of JDBC ```ResultSet``` row.
 
 It iterates on object fields, trying to find matching columns in ```ResultSet```, and 
  throws ```IllegalArgumentException``` if there's no such column found.
