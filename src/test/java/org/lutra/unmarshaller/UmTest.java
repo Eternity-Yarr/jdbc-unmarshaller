@@ -13,7 +13,7 @@ import java.sql.Statement;
  *
  * @author Dmitry V. (savraz [at] gmail.com)
  */
-public class umTest
+public class UmTest
 {
 	@Test
 	public void testUnmarshalling() throws  Exception
@@ -35,7 +35,7 @@ INSERT INTO test_table (int_field, string_field, double_field, my_int) VALUES (1
 		ResultSet rs = s.executeQuery("SELECT * FROM test_table");
 		while(rs.next())
 		{
-			testPOJO p = rsm.asPOJO(rs, testPOJO.class);
+			TestPOJO p = rsm.asPOJO(rs, TestPOJO.class);
 			System.out.println(p);
 		}
 		rs.close();

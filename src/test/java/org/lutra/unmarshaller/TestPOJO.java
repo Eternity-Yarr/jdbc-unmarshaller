@@ -8,7 +8,7 @@ import javax.persistence.Column;
  *
  * @author Dmitry V. (savraz [at] gmail.com)
  */
-public class testPOJO
+public class TestPOJO
 {
 	int int_field;
 	String string_field;

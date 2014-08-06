@@ -45,7 +45,10 @@ public class ResultSetUnmarshall
 			rs.findColumn(name);
 			ret = true;
 		}
-		catch(SQLException e){ret = false;}
+		catch(SQLException e)
+		{
+			ret = false;
+		}
 
 		return ret;
 	}
@@ -88,7 +91,7 @@ public class ResultSetUnmarshall
 							f.setBoolean(t, rs.getBoolean(column_name));
 						else if(f.getType() == Short.class || f.getType() == short.class)
 							f.setShort(t, rs.getShort(column_name));
-						else if(f.getType() == Short.class || f.getType() == short.class)
+						else if(f.getType() == Byte.class || f.getType() == byte.class)
 							f.setByte(t, rs.getByte(column_name));
 						else if(f.getType() == Float.class || f.getType() == float.class)
 							f.setFloat(t, rs.getFloat(column_name));
@@ -106,7 +109,6 @@ public class ResultSetUnmarshall
 			{
 				throw new IllegalArgumentException(String.format("Property %s of %s object is not accessible", f.getName(), clazz), e);
 			}
-
 		}
 
 		return t;
