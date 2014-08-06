@@ -39,18 +39,18 @@ public class ResultSetUnmarshall
 
 	private static boolean columnPresent(ResultSet rs, String name)
 	{
-		boolean ret;
+		boolean found;
 		try
 		{
 			rs.findColumn(name);
-			ret = true;
+			found = true;
 		}
 		catch(SQLException e)
 		{
-			ret = false;
+			found = false;
 		}
 
-		return ret;
+		return found;
 	}
 
 	public <T> T asPOJO(ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
