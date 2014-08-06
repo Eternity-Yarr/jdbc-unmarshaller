@@ -23,7 +23,7 @@ And MySQL table
 
 with a few rows representing TestPOJO instances, we can select them, and unmarshall to java objects like that:
 
-```
+```java
 ResultSetUnmarshall rsm = new ResultSetUnmarshall();
 ResultSet rs = s.executeQuery("SELECT * FROM test_table");
 while(rs.next())
@@ -35,6 +35,7 @@ while(rs.next())
 ```
 
 For some customization use  ```javax.persistence.Column``` annotation.
+
 Currently this library supports ```name``` and ```updatable``` fields.
 
 * ```name``` stands for some custom JDBC column name (``` @Column(name="my_int") ```)
@@ -42,7 +43,7 @@ Currently this library supports ```name``` and ```updatable``` fields.
 
 Also it's possible to unmarshall JDBC row to existing instance:
 
-```
+```java
 TestPOJO p = new TestPOJO();
 /* do some preinitialization */
 rsm.asPOJO(p, rs, TestPOJO.class);
