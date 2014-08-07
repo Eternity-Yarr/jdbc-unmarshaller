@@ -1,6 +1,7 @@
 package org.lutra.unmarshaller;
 
 import javax.persistence.Column;
+import java.util.Date;
 
 /**
  * 06.08.2014 at 14:24
@@ -17,7 +18,8 @@ public class TestPOJO
 	int int_field_custom_name;
 	@Column(updatable = false)
 	String pre_initialized = "With some value";
-
+	@Column(nullable = true)
+	Date null_column;
 	@Override
 	public String toString()
 	{
@@ -27,6 +29,7 @@ public class TestPOJO
 			", double_field=" + double_field +
 			", int_field_custom_name=" + int_field_custom_name +
 			", pre_initialized='" + pre_initialized + '\'' +
+			", null_column=" + null_column +
 			'}';
 	}
 }

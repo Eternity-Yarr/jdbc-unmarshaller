@@ -72,6 +72,7 @@ public class ResultSetUnmarshall
 		for(Field f : fs)
 		{
 			String column_name = f.getName();
+			boolean nullable = false;
 			if(f.isAnnotationPresent(Column.class))
 			{
 				Column ca = f.getAnnotation(Column.class);
@@ -79,6 +80,7 @@ public class ResultSetUnmarshall
 					column_name = ca.name();
 				if(!ca.updatable())
 					continue;
+				nullable = ca.nullable();
 			}
 			try
 			{
@@ -108,8 +110,8 @@ public class ResultSetUnmarshall
 					{
 						throw new IllegalArgumentException(String.format("Type adapter %s constructor is not accessible", registered_adapters.get(f.getType())), e);
 					}
-				else if(!allow_nulls)
-					throw new IllegalArgumentException(String.format("Column for public field %s not found in result set, while nulls are not allowed", f.getName()));
+				else if(!nullable)
+					throw new IllegalArgumentException(String.format("Column for public field %s not found in result set, while null were not allowed", f.getName()));
 			}
 			catch(IllegalAccessException e)
 			{

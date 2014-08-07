@@ -1,12 +1,12 @@
 jdbc-unmarshaller
 =================
 
-This library reflective maps **by name**l object fields to columns of JDBC ```ResultSet``` row.
+This library reflective maps **by name** object fields to columns of JDBC ```ResultSet``` row.
 
 It iterates on object fields, trying to find matching columns in ```ResultSet```, and 
  throws ```IllegalArgumentException``` if there's no such column found.
  
-You can override this behavior, so library will skip absent fields by calling ```allowNulls()``` method on ```ResultSetUnmarshall``` instance. 
+You can override this behavior, using ```@Column(nullable=true)``` annotation. 
 
 ### [Example](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/UmTest.java)
 Given some [POJO](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/TestPOJO.java) ```TestPOJO.java```
@@ -40,12 +40,15 @@ while(rs.next())
 
 Or you can get them as List using ```asPOJOList(rs, TestPOJO.class)``` (this method will rewind cursor of ```ResultSet``` to first row prior to fetching). 
 
+### Annotations
+
 For some customization use  ```javax.persistence.Column``` annotation.
 
 Currently this library supports ```name``` and ```updatable``` fields.
 
 * ```name``` stands for some custom JDBC column name ``` @Column(name="my_int") ```
 * ```updatable``` signals that this particular field shouldn't be updated by unmarshaller ``` @Column(updatable = false) ```
+* ```nullable``` should be set to true if result set doesn't have column matching this property  
 
 Also it's possible to unmarshall JDBC row to existing instance:
 
