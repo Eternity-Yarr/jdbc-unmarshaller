@@ -6,7 +6,7 @@ This library reflective maps **by name** object fields to columns of JDBC ```Res
 It iterates on object fields, trying to find matching columns in ```ResultSet```, and 
  throws ```IllegalArgumentException``` if there's no such column found.
  
-You can override this behavior, using ```@Column(nullable=true)``` [annotation](#Annotations). 
+You can override this behavior, using ```@Column(nullable=true)``` [annotation](#annotations). 
 
 ### [Example](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/UmTest.java)
 Given some [POJO](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/TestPOJO.java) ```TestPOJO.java```
