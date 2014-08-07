@@ -32,22 +32,6 @@ public class ResultSetUnmarshall
 		registered_adapters.put(for_class, adapter);
 	}
 
-	private static boolean columnPresent(ResultSet rs, String name)
-	{
-		boolean found;
-		try
-		{
-			rs.findColumn(name);
-			found = true;
-		}
-		catch(SQLException e)
-		{
-			found = false;
-		}
-
-		return found;
-	}
-
 	public <T> List<T> asPOJOList(ResultSet rs, Class<T> clazz) throws  IllegalArgumentException, SQLException
 	{
 		List<T> xs = new ArrayList<>();
@@ -56,6 +40,22 @@ public class ResultSetUnmarshall
 			while(rs.next());
 
 		return xs;
+	}
+
+	public <T> T asPOJO(ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
+	{
+		T t;
+		try
+		{
+			t = clazz.newInstance();
+		}
+		catch(InstantiationException | IllegalAccessException e)
+		{
+			throw new IllegalArgumentException(String.format("Cannot instantiate object of class %s", clazz), e);
+		}
+		asPOJO(t, rs, clazz);
+
+		return t;
 	}
 
 	public <T> void asPOJO(final T t, ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
@@ -112,19 +112,19 @@ public class ResultSetUnmarshall
 		}
 	}
 
-	public <T> T asPOJO(ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException
+	private static boolean columnPresent(ResultSet rs, String name)
 	{
-		T t;
+		boolean found;
 		try
 		{
-			t = clazz.newInstance();
+			rs.findColumn(name);
+			found = true;
 		}
-		catch(InstantiationException | IllegalAccessException e)
+		catch(SQLException e)
 		{
-			throw new IllegalArgumentException(String.format("Cannot instantiate object of class %s", clazz), e);
+			found = false;
 		}
-		asPOJO(t, rs, clazz);
 
-		return t;
+		return found;
 	}
 }
