@@ -21,7 +21,6 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ResultSetUnmarshall
 {
 	final private Map<Class, Class<? extends TypeAdapter>> registered_adapters = new ConcurrentHashMap<>();
-	private boolean allow_nulls = false;
 
 	public ResultSetUnmarshall()
 	{
@@ -31,13 +30,6 @@ public class ResultSetUnmarshall
 	public void registerAdapter(Class for_class, Class<? extends TypeAdapter> adapter)
 	{
 		registered_adapters.put(for_class, adapter);
-	}
-
-	public ResultSetUnmarshall allowNulls()
-	{
-		allow_nulls = true;
-
-		return this;
 	}
 
 	private static boolean columnPresent(ResultSet rs, String name)
