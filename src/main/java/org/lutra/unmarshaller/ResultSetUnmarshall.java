@@ -6,7 +6,9 @@ import javax.persistence.Column;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -52,6 +54,16 @@ public class ResultSetUnmarshall
 		}
 
 		return found;
+	}
+
+	public <T> List<T> asPOJOList(ResultSet rs, Class<T> clazz) throws  IllegalArgumentException, SQLException
+	{
+		List<T> xs = new ArrayList<>();
+		if(rs.first())
+			do xs.add(asPOJO(rs, clazz));
+			while(rs.next());
+
+		return xs;
 	}
 
 	public <T> void asPOJO(final T t, ResultSet rs, Class<T> clazz) throws IllegalArgumentException, SQLException

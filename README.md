@@ -1,7 +1,7 @@
 jdbc-unmarshaller
 =================
 
-This library reflective maps **by name** object fields to columns of JDBC ```ResultSet``` row.
+This library reflective maps **by name**l object fields to columns of JDBC ```ResultSet``` row.
 
 It iterates on object fields, trying to find matching columns in ```ResultSet```, and 
  throws ```IllegalArgumentException``` if there's no such column found.
@@ -37,6 +37,8 @@ while(rs.next())
 	System.out.println(p); 
 }
 ```
+
+Or you can get them as List using ```asPOJOList(rs, TestPOJO.class)``` (this method will rewind cursor of ```ResultSet``` to first row prior to fetching). 
 
 For some customization use  ```javax.persistence.Column``` annotation.
 

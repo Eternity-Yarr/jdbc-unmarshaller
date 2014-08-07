@@ -6,6 +6,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * 06.08.2014 at 15:12
@@ -38,6 +42,8 @@ INSERT INTO test_table (int_field, string_field, double_field, my_int) VALUES (1
 			TestPOJO p = rsm.asPOJO(rs, TestPOJO.class);
 			System.out.println(p);
 		}
+		List<TestPOJO> pojos = rsm.asPOJOList(rs, TestPOJO.class);
+		assertEquals(2, pojos.size());
 		rs.close();
 		s.close();
 		con.close();
