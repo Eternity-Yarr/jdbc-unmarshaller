@@ -44,7 +44,7 @@ Or you can get them as List using ```asPOJOList(rs, TestPOJO.class)``` (this met
 
 For some customization use  ```javax.persistence.Column``` annotation.
 
-Currently this library supports ```name``` and ```updatable``` fields.
+Currently this library supports this fields:
 
 * ```name``` stands for some custom JDBC column name ``` @Column(name="my_int") ```
 * ```updatable``` signals that this particular field shouldn't be updated by unmarshaller ``` @Column(updatable = false) ```
