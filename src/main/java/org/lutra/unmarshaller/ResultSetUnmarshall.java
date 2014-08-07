@@ -24,7 +24,7 @@ public class ResultSetUnmarshall
 
 	public ResultSetUnmarshall()
 	{
-		registered_adapters.put(String.class, StringAdapter.class);
+		this.registerAdapter(String.class, StringAdapter.class);
 	}
 
 	public void registerAdapter(Class for_class, Class<? extends TypeAdapter> adapter)
