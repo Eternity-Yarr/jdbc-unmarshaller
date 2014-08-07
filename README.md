@@ -1,12 +1,12 @@
 jdbc-unmarshaller
 =================
 
-This library reflective maps **by name** object fields to columns of JDBC ```ResultSet``` row.
+This library reflective maps **by name** fields of an object to columns of JDBC ```ResultSet``` row.
 
-It iterates on object fields, trying to find matching columns in ```ResultSet```, and 
- throws ```IllegalArgumentException``` if there's no such column found.
+It iterates on an object fields, trying to find matching columns in a ```ResultSet```, and 
+ throws an ```IllegalArgumentException``` if there's no such column found.
  
-You can override this behavior, using ```@Column(nullable=true)``` [annotation](#annotations). 
+You can override this behavior, using a ```@Column(nullable=true)``` [annotation](#annotations). 
 
 ### [Example](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/UmTest.java)
 Given some [POJO](https://github.com/Eternity-Yarr/jdbc-unmarshaller/blob/master/src/test/java/org/lutra/unmarshaller/TestPOJO.java) ```TestPOJO.java```
